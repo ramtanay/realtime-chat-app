@@ -39,19 +39,24 @@ create_tables()
 import os
 
 
-@app.route("/reset-db")
-def reset_db():
+@app.route("/reset-db/<string:password>", methods=["POST"])
+def reset_db(password):
+    db_password = os.environ.get("DB_PASSWORD")
 
-    if os.path.exists("chat.db"):
+
+    if os.path.exists("chat.db") and password == db_password:
 
         os.remove("chat.db")
+        create_tables()
+        return {
 
-    create_tables()
+            "message": "Database reset successful"
+        }
+    else:
+        return {
 
-    return {
-
-        "message": "Database reset successful"
-    }
+            "message": "Invalid password or database does not exist"
+        }, 400
 
 
 
