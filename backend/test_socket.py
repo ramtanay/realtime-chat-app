@@ -19,6 +19,6 @@ def receive_message(data):
     print("Received:", data)
 
 
-sio.connect('http://127.0.0.1:5000')
+# sio.connect('http://127.0.0.1:5000')
 
 sio.wait()
