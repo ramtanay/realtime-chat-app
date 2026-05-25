@@ -36,9 +36,22 @@ def protected(data):
         'user_id': data['user_id']
     })
 create_tables()
+import os
 
-if __name__ == '__main__':
-    socketio.run(app,debug=True)
+if __name__ == "__main__":
+
+    port = int(
+        os.environ.get("PORT", 5000)
+    )
+
+    socketio.run(
+
+        app,
+
+        host="0.0.0.0",
+
+        port=port
+    )
 
 
 
