@@ -38,6 +38,27 @@ def protected(data):
 create_tables()
 import os
 
+
+@app.route("/reset-db")
+def reset_db():
+
+    if os.path.exists("chat.db"):
+
+        os.remove("chat.db")
+
+    create_tables()
+
+    return {
+
+        "message": "Database reset successful"
+    }
+
+
+
+
+
+
+
 if __name__ == "__main__":
 
     port = int(
