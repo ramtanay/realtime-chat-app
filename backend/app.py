@@ -114,7 +114,8 @@ def reset_db():
 
 @app.route('/health')
 def health():
-    return jsonify({"The app is healthy..."})
+    return jsonify({
+        "status": "healthy"})
 
 
 # =========================
