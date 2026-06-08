@@ -112,6 +112,11 @@ def reset_db():
     }, 400
 
 
+@app.route('/health')
+def health():
+    return jsonify({"The app is healthy..."})
+
+
 # =========================
 # CREATE TABLES
 # =========================
